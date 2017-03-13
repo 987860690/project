@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>图片动态转换</title>
+		<style type="text/css">
+			* {
+				padding: 0px;
+				margin: 0px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+			
+			.main {
+				width: 900px;
+				height: 425px;
+			}
+			/*图片*/
+			
+			.top {
+				width: 900px;
+				height: 310px;
+				overflow: hidden;
+			}
+			/*菜单*/
+			
+			.nav {
+				width: 900px;
+				height: 115px;
+				background-color: rgba(0, 0, 0, .4);
+				color: #fff;
+			}
+			
+			ul {
+				list-style: none;
+				text-align: center;
+				/*border: 1px solid blue;*/
+			}
+			
+			ul li {
+				/*display: inline-block;*/
+				width: 298px;
+				height: 83px;
+				float: left;
+				/*垂直劇中*/
+				padding-top: 32px;
+			}
+			
+			.f-size {
+				font-size: 13px;
+			}
+			/*选择效果*/
+			
+			.select {
+				background-color: rgba(0, 0, 0, .2);
+			}
+		</style>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(".nav ul li").click(function() {
+					//siblings:兄弟姐妹  寻找同级元素
+					$(this).addClass("select").siblings().removeClass("select");
+					var index = $(this).index();
+					var height = -index * 310;
+					$(".top div:eq(0)").stop().animate({"margin-top":height},1000)
+				})
+				
+				
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="main">
+			<div class="top">
+				<div><img src="img/1.jpg" alt="" /></div>
+				<div><img src="img/2.jpg" alt="" /></div>
+				<div><img src="img/3.jpg" alt="" /></div>
+			</div>
+			<div class="nav">
+				<ul>
+					<li class="select">
+						<p>网页制作基础课程</p>
+						<p class="f-size">下午三點上課</p>
+					</li>
+					<li>
+						<p>javaScript基础课程</p>
+						<p class="f-size">下午三點上課</p>
+					</li>
+					<li>
+						<p>html5基础课程</p>
+						<p class="f-size">下午三點上課</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+
+</html>
