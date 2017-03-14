@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>精美相册</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background-image: url(img/bg.jpg);
+				/*当图片移动时超出范围出现滚动条  去除在baody里面设置overflow: hidden;*/
+				overflow: hidden;
+			}
+			
+			.pic {
+				width: 750px;
+				height: 540px;
+				margin: 100px auto;
+			}
+			
+			.pic ul {
+				list-style: none;
+			}
+			
+			.pic ul li {
+				width: 238px;
+				height: 167px;
+				float: left;
+			/*	border: 1px solid #000000;*/
+				margin: 5px;
+				/*padding: 3px 3px;*/
+				background-color: #fff;
+				box-shadow: 0 0 20px #fff;
+			}
+			
+			.pic ul li img {
+				width: 230px;
+				height: 159px;
+				padding: 4px;
+			}
+			#show{
+				/*border: 1px solid blue;*/
+				width: 650px;
+				height: 450px;
+				position: absolute;
+				left: 50%;
+				margin-left: -325px;
+				top: 145px;
+				z-index: 20;
+				display: none;
+			}
+			#showImage span{
+				/*border: 1px solid red;*/
+				width: 650px;
+				height: 450px;
+				position: absolute;
+				background-color: #FFFFFF;
+				padding: 4px;
+				box-shadow:0 0 5px #fff;
+			}
+			#showImage img{
+				width: 650px;
+				height: 450px;
+				
+			}
+			#next{
+				position: absolute;
+				right: 200px;
+			}
+			#pre{
+				position: absolute;
+				left: 200px;
+			}
+			.pic ul li img,span p:hover{
+				cursor: pointer;
+			}
+			span p{
+				font-weight: bold;
+				line-height: 70px;
+				font-size: 60px;
+				font-family: "微软雅黑";
+				width: 50px;
+				height: 80px;
+				border: 4px solid rgba(255,255,255,.8);
+				border-radius: 25%;
+				/*padding: 5px 5px;*/
+				color: #C5C5C5;
+				background-color: rgba(0,0,0,.4);
+				top: 330px;
+				z-index: 20;
+				
+			}
+			/*遮罩样式*/
+			#shadow{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: rgba(0,0,0,.4);
+				z-index: 10;
+				display: none;
+			}
+			#cx{
+				display: none;
+			}
+		</style>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$('.pic ul li').click(function(){
+					$('#shadow').fadeIn(500);
+					$('#show').fadeIn(500);
+					$('#cx').fadeIn(500);
+//					$('#shadow').css("display","block");
+//					$('#show').css("display","block");
+//					$('#cx').css("display","block");
+
+				//动态显示图片
+				//点击的lli的下标和图片文件夹名称相等
+				var $imgs = $('#showImage img');
+				var length = $('#showImage img').size();
+//				alert(length)
+				var index = $(this).index();
+				for(var i=0;i<length;i++){
+					var url = "img/show/"+index+"/"+(i+1)+".jpg";
+					$imgs.eq(i).attr("src",url)
+				}
+				})
+				//为next添加点击事件
+				$('#next').click(function(){
+					//拿到最后一个span右移动
+					$('#showImage span:last').animate({"left":"670px"},500,function(){
+						$(this).animate({"left":"0px"},500)
+						//把其放到最后一张，移动图片.即向#showImage后面添加span，用到内部插入
+						//append ： 为元素添加子元素，将其添加至最后面
+						//prepend(): 将子元素放到最前面
+						$('#showImage').prepend($(this))
+					})
+					//拿整个show移动，否则移动其中领一张图片，底层会显示其他图片
+					$('#show').animate({"left":"30%"},500,function(){
+						$(this).animate({"left":"50%"},500)
+					})
+				})
+				
+				//为pre添加点击事件
+				$("#pre").click(function(){
+					$('#showImage span:first').animate({"left":"-670px"},500,function(){
+						$(this).animate({"left":"0px"},500)
+						$('#showImage').append($(this))
+					})
+					
+					$('#show').animate({"left":"70%"},500,function(){
+						$(this).animate({"left":"50%"},500)
+					})
+				})
+				
+				
+				//点击阴影区域相册消失
+				$('#shadow').click(function(){
+					$('#shadow').fadeOut(500);
+					$('#show').fadeOut(500);
+					$('#cx').fadeOut(500);
+				})
+			})
+		</script>
+	</head>
+
+	<body>
+		<div class="pic">
+			<ul>
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+				<li><img src="img/4.jpg" alt="" /></li>
+				<li><img src="img/5.jpg" alt="" /></li>
+				<li><img src="img/6.jpg" alt="" /></li>
+				<li><img src="img/7.jpg" alt="" /></li>
+				<li><img src="img/8.jpg" alt="" /></li>
+				<li><img src="img/9.jpg" alt="" /></li>
+			</ul>
+		</div>
+		<!--定义黑色遮罩-->
+		<div id="shadow"></div>
+		<!--点击弹出的相册-->
+		<div id="cx">
+		<div id="show">
+			<div id="showImage">
+				<span><img src="img/show/0/1.jpg"></span>
+				<span><img src="img/show/0/2.jpg"></span>
+				<span><img src="img/show/0/3.jpg"></span>
+				<span><img src="img/show/0/4.jpg"></span>
+				<span><img src="img/show/0/5.jpg"></span>
+				
+			</div>
+		</div>
+		<span><p id="pre">< </p></span>
+		<span><p id="next">&gt;</p></span>
+		</div>
+	</body>
+
+</html>
