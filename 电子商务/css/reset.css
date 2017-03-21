@@ -1,0 +1,68 @@
+body {
+	font-family: "微软雅黑";
+	background-color: #fff;
+	font-size: 12px;
+}
+
+body,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+form,
+input,th,td,select {
+	margin: 0;
+	padding: 0;
+}
+em{
+	font-style: normal;
+}
+ul,
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #666;
+}
+
+img{
+	border: none;
+	vertical-align: top;
+}
+
+table{
+	border-collapse: collapse;
+}
+input.textarea{
+	outline: none;
+}
+textarea{
+	resize: none;
+	overflow: auto;
+}
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			/*IE浏览器清除浮动*/
+			.clear{
+				zoom: 1;
+			}
+			/*标准浏览器清除浮动*/
+			.clear:after{
+				content: ' ';
+				display: block;
+				clear: both;
+			}
