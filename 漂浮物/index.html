@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>漂浮物</title>
+		<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+			body {
+				background: url(img/timg.gif) no-repeat;
+				background-size: cover;
+				overflow: hidden;
+			}
+			
+			#heart {
+				width: 520px;
+				height: 520px;
+				/*border-radius: 12px 12px 25px 25px;*/
+				/*border: 1px solid deepskyblue;*/
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			/*#heart div {
+				width: 10px;
+				height: 16px;
+				position: absolute;
+				background-color: greenyellow;
+				top: 0px;
+			}
+			
+			#heart .left {
+				left: 0px;
+				border-radius: 10px 10px 0 0;
+				transform: rotate(-45deg);
+			}
+			
+			#heart .right {
+				left: 5px;
+				border-radius: 10px 10px 0 0;
+				transform: rotate(45deg);
+			}*/
+			
+			/*css伪类  必须添加content属性才生效*/
+			/*#heart:before,#heart:after{
+				content: "";
+				width: 10px;
+				height: 16px;
+				position: absolute;
+				background-color: greenyellow;
+				border-radius: 10px 10px 0 0;
+				top: 0px;
+			}*/
+			/*#heart:before{
+				伪类在标签内容的前面添加内容
+				left: 0px;
+				transform: rotate(-45deg);
+			}
+			#heart:after{
+				left: 5px;
+				transform: rotate(45deg);
+			}*/
+			.snowfall-flakes{
+				position: relative;
+				width: 20px;
+				height: 20px;
+			}
+			.snowfall-flakes:before,.snowfall-flakes:after{
+				content:"";
+				width: 10px;
+				height: 16px;
+				position: absolute;
+				background-color: greenyellow;
+				border-radius: 10px 10px 0 0;
+				top: 0px;
+			}
+			.snowfall-flakes:before{
+				/*伪类在标签内容的前面添加内容*/
+				left: 0px;
+				transform: rotate(-45deg);
+			}
+			.snowfall-flakes:after{
+				left: 5px;
+				transform: rotate(45deg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="heart">
+			<!--<div class="left"></div>
+			<div class="right"></div>-->
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/snowfall.jquery.js"></script>
+		<script>
+			$(document).snowfall({
+				flakeCount:50
+			})
+		</script>
+	</body>
+
+</html>
