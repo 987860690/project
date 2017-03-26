@@ -89,10 +89,10 @@
  			 
  			.section { 
  				width: 318px; 
- 				height: 200px; 
+ 				/*height: 200px; */
  				padding: 0 15px; 
  			} 
- 			 
+ 			  
  			.options { 
  				width: 350px; 
  				border: 1px solid #dbdbdb; 
@@ -105,7 +105,7 @@
  			} 
  			 
  			.side_section { 
- 				height: 50px; 
+ 				/*height: 50px; */
  				overflow: hidden; 
  				padding: 0 12px; 
  			} 
@@ -130,14 +130,18 @@
  			.options .nav li { 
  				width: 172px; 
  				height: 33px; 
+ 				line-height: 33px;
  				border: 1px solid #dbdbdb; 
  				border-bottom: none; 
  				border-radius: 6px 6px 0 0; 
+ 				text-align: center;
+ 				position: relative;
  			} 
  			 
  			.options .nav .active { 
  				width: 172px; 
  				height: 34px; 
+ 				line-height: 34px;
  				background-color: #fff; 
  			} 
  			 
@@ -218,7 +222,57 @@
  			#search .update strong{color: #d30703;font-weight: normal;}
  			#search .update span{color: #999;}
  			#search .update .triangle_down_red{top: 17px;right: 0px;}
- 			#search .update .triangle_up{top:8px;right: 0px;}
+ 			#search .update .triangle_up{top:8px;right: 0px;}\
+ 			
+ 			
+ 			.video_title{font-size: 18px;height:42px ; line-height: 42px;color:#d90000 ;
+ 					font-weight: normal; background: url(img/video_bg.gif) no-repeat 105px 10px;}
+ 			.video{margin-bottom: 13px;}
+ 			.video_list{padding-left: 75px;height: 78px;background: url(img/video_bg.gif) no-repeat 3px -47px;}
+ 			.video_list li{line-height: 20px; text-indent: 14px;background: url(img/dot.gif) no-repeat 5px center;}
+ 			.video_list li a{color: #4d4d4d;}
+ 			.video_list li a:hover{text-decoration: underline;}
+ 			
+ 			/**/
+ 			.nav li{}
+ 			.nav li strong,.main_title strong{color: #cc013d;font-family:arial;font-size: 12px;}
+ 			.nav li span,.main_title span{color:#000 ;}
+ 			.nav li .triangle_down_red,.nav li .triangle_down_gray {position: absolute;top: 14px;right: 12px;}
+ 			
+ 			/*main_title*/
+ 			.main_title{height: 40px;position: relative}
+ 			.main_title strong{line-height:40px;}
+ 			.main_title a{position: absolute;top: 15px;right: 0;}
+ 			
+ 			
+ 			.tab{height: 25px;border-bottom: 1px solid #dadada;}
+ 			.tab ul{height: 26px; margin-bottom: -1px;position: relative;}
+ 			.tab ul li{float: left;height: 24px;border: 1px solid #dadada;border-radius: 4px 4px 0px 0px;margin-right: -1px;text-align: center;line-height: 24px;color: #666;position: relative;}
+ 			.tab ul li a{top: 10px;right: 12px;cursor: pointer;}
+ 			.tab .active{border-bottom: 1px solid #fff;color: #454545;background: #fff;}
+ 			
+ 			.section .tab{padding: 0 10px;}
+ 			.section .tab ul li{width: 98px;}
+ 			.side_section .tab{padding: 0 6px;}
+ 			.side_section .tab ul li{width: 66px;}
+ 			
+ 			
+ 			/**/
+ 			.list_section{}
+ 			.list_section li{height: 27px;line-height: 27px;border-bottom: 1px dotted #DADADA;background: url(img/dot.gif) no-repeat 5px center;vertical-align: middle;}
+ 			.list_section li a{color: #333333;float: left;text-indent: 14px;}
+ 			.list_section li a :hover{text-decoration: underline;}
+ 			.list_section li a em{color: #c3c3c3;}
+ 			.list_section li a span{color: #c75d61;}
+ 			.list_section .title{background: none;}
+ 			.list_section .title a{text-align: center;}
+ 			
+ 			.list_section .col1,.list_section .col2,.list_section .col3{float: left;}
+ 			.list_section .col2,.list_section .col3{text-align: center;}
+ 			.list_section .col1{width: 130px;}
+ 			.list_section .col2{width: 35px;}
+ 			.list_section .col2{width: 34px;}
+ 			
  		</style> 
  		<script src="js/jquery.min.js"></script> 
  	</head> 
@@ -315,13 +369,26 @@
  		</div> 
  		<div class="content clear"> 
  			<div class="main fl"> 
- 				<div class="clear clear_bottom"> 
+ 				<div class="main_wrap clear clear_bottom"> 
  					<div class="section fl"> 
+ 						<h2 class="video_title">WHAT'HOT</h2>
+ 						<div class="video"><img src="img/play_bg.gif"></div>
+ 						<ul class="video_list">
+ 							<li><a href="#">现场实录：杭州机场系统奔溃</a></li>
+ 							<li><a href="#">现场实录：杭州机场系统奔溃</a></li>
+ 							<li><a href="#">现场实录：杭州机场系统奔溃</a></li>
+ 						</ul>
  					</div> 
  					<div class="options fr"> 
  						<ul class="nav"> 
- 							<li class="active fl">tab1 </li> 
- 							<li class="gradient fr">tab2</li> 
+ 							<li class="active fl">
+ 								<strong>HOT SHOP <span> 红店铺</span></strong>
+ 								<a class="triangle_down_red" href="javascript:;"></a>
+ 							</li> 
+ 							<li class="gradient fr">
+ 									<strong>EW SHOP <span> 新开张</span></strong>
+ 									<a class="triangle_down_gray" href="javascript:;"></a>
+ 							</li> 
  						</ul> 
  						<div class="con"></div> 
  					</div> 
@@ -331,17 +398,40 @@
  				</div> 
  				<div class="clear clear_bottom"> 
  					<div class="section fl"></div> 
- 					<div class="section fr"></div> 
+ 					<div class="section fr">
+ 						<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					
+ 					<div class="tab">
+ 						<ul>
+ 							<li class="active">有人在问<a class="triangle_down_red" href="javascript:;"></a></li>
+ 							<li class="gradient">有人知道<a class="triangle_down_gray" href="javascript:; "></a></li>
+ 							<li class="gradient">热门问题<a class="triangle_down_gray" href="javascript:; "></a></li>
+ 						</ul>
+ 					</div>
+ 					<div style="height: 100px;background: #f1f1f1;"></div>
+ 					</div> 
  				</div> 
  				<div class="clear  clear_bottom"> 
  					<div class="options fl"> 
  						<ul class="nav"> 
- 							<li class="active fl">tab1 </li> 
- 							<li class="gradient fr   ">tab2</li> 
+ 							<li class="active fl">
+ 								<strong>HOT SHOP <span> 红店铺</span></strong>
+ 								<a class="triangle_down_red" href="javascript:;"></a>
+ 							</li> 
+ 							<li class="gradient fr">
+ 								<strong>HOT SHOP <span> 红店铺</span></strong>
+ 								<a class="triangle_down_gray" href="javascript:;"></a>
+ 							</li> 
  						</ul> 
  						<div class="con"></div> 
  					</div> 
- 					<div class="section fr"></div> 
+ 					<div class="section fr">
+ 						<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					</div> 
  				</div> 
  				<div class="main_ad"> 
  					<a href="#"><img src="img/ad/ad1.jpg"></a> 
@@ -349,32 +439,130 @@
  				<div class="clear  clear_bottom"> 
  					<div class="options fl"> 
  						<ul class="nav"> 
- 							<li class="active fl">tab1 </li> 
- 							<li class="gradient fr">tab2</li> 
+ 							<li class="active fl">
+ 								<strong>HOT SHOP <span> 红店铺</span></strong>
+ 								<a class="triangle_down_red" href="javascript:;"></a>
+ 							</li> 
+ 							<li class="gradient fr">
+ 								<strong>HOT SHOP <span> 红店铺</span></strong>
+ 								<a class="triangle_down_gray" href="javascript:;"></a>
+ 							</li> 
  						</ul> 
  						<div class="con"></div> 
  					</div> 
- 					<div class="section fr"></div> 
+ 					<div class="section fr">
+ 						<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					</div> 
  				</div> 
  				<div class="clear"> 
- 					<div class="section fl"></div> 
- 					<div class="section fr"></div> 
+ 					<div class="section fl">
+ 						<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					</div> 
+ 					<div class="section fr">
+ 						<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					</div> 
  				</div> 
  			</div> 
   
  			<div class="side fr"> 
- 				<div class="side_section"></div> 
+ 				<div class="side_section">
+ 					<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 				</div> 
  				<div class="side_ad"> 
  					<a href="#"><img src="img/ad/ad2.jpg"></a> 
  				</div> 
  				<div class="side_ad"> 
  					<a href="#"><img src="img/ad/ad3.jpg"></a> 
  				</div> 
- 				<div class="side_section"></div> 
- 				<div class="side_section"></div> 
- 				<div class="side_section"></div> 
- 				<div class="side_section"></div> 
- 				<div class="side_section"></div> 
+ 				<div class="side_section">
+ 					<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 				</div> 
+ 				<div class="side_section">
+ 					<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 						<div class="tab">
+ 						<ul>
+ 							<li class="active">人气<a class="triangle_down_red" href="javascript:;"></a></li>
+ 							<li class="gradient">推荐<a class="triangle_down_gray" href="javascript:; "></a></li>
+ 							<li class="gradient">最新<a class="triangle_down_gray" href="javascript:; "></a></li>
+ 						</ul>
+ 					</div>
+ 					<div class="list_section">
+ 						<ul>
+ 						<li class="title">
+ 							<span class="col1"><a href="#">商店名</a></span>
+ 							<span class="col2"><a href="#">省</a></span>
+ 							<span class="col3"><a href="#">打印</a></span>
+ 						</li>
+ 						<li>
+ 							<span class="col1"><a href="#">老北京 一尊皇牛</a></span>
+ 							<span class="col2"><a href="#">12%</a></span>
+ 							<span class="col3"><a href="#">345</a></span>
+ 						</li>
+ 						<li>
+ 							<span class="col1"><a href="#">老北京 一尊皇牛</a></span>
+ 							<span class="col2"><a href="#">12%</a></span>
+ 							<span class="col3"><a href="#">345</a></span>
+ 						</li>
+ 						<li>
+ 							<span class="col1"><a href="#">老北京 一尊皇牛</a></span>
+ 							<span class="col2"><a href="#">12%</a></span>
+ 							<span class="col3"><a href="#">345</a></span>
+ 						</li>
+ 						</ul>
+ 					</div>
+ 					
+ 				</div> 
+ 				<div class="side_section">
+ 					<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 				</div> 
+ 				<div class="side_section">
+ 					<h2 class="main_title"><strong>LOAD<span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					<div class="list_section">
+ 						<ul>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						</ul>
+ 					</div>
+ 				</div> 
+ 				<div class="side_section">
+ 					<h2 class="main_title"><strong>LOAD<sup>o</sup><span>登陆</span></strong>
+ 						<a href="#" title="更多"><img src="img/more.gif"></a>
+ 					</h2>
+ 					<div class="list_section">
+ 						<ul>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						<li><a href="#"><em>[<span>休闲</span>]</em>老北京 一尊皇牛</a></li>
+ 						</ul>
+ 					</div>
+ 				</div> 
  			</div> 
  		</div> 
  		<div id="footer"></div> 
