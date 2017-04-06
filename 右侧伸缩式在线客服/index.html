@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.service {
+				width: 40px;
+				height: 250px;
+				background: #28a6e1;
+				border-radius: 10px 0 0 10px;
+				border: 3px solid #28a6e1;
+				position: absolute;
+				right: 0;
+				top: 66px;
+				overflow: hidden;
+			}
+			
+			.fl {
+				float: left;
+			}
+			
+			.fr {
+				float: right;
+			}
+			
+			.service .r-content,
+			.service .l-btn {
+				height: 248px;
+				border: 1px solid #28a6e1;
+			}
+			
+			.service .l-btn {
+				width: 48px;
+				background: url(img/lanrenzhijia.png) no-repeat 7px center;
+			}
+			
+			.service .r-content {
+				width: 148px;
+				border-radius: 5px;
+				background: #fff;
+			}
+			
+			.service .r-content h4 {
+				line-height: 30px;
+				height: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="service ">
+			<div class="l-btn fl"></div>
+			<div class="r-content fr">
+				<h4>懒人之家在线客服</h4>
+				<p>客服1
+					<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=11&amp;menu=yes"><img src="img/online.png" /></a>
+				</p>
+				<p>客服1
+					<a href="#"><img src="img/online.png" /></a>
+				</p>
+				<p>客服1
+					<a href="#"><img src="img/online.png" /></a>
+				</p>
+			</div>
+			<script src="js/jquery.min.js"></script>
+			<!--<script src="js/index.js" type="text/javascript"></script>-->
+			<script>
+				$(function() {
+					var mark = 1;
+					$('.l-btn').click(function() {
+
+						if(mark == 1) {
+							$('.service').animate({
+								"width": 200
+							}, 300);
+							$(this).css("background-position", "-32px center");
+							mark = 2;
+						} else if(mark == 2) {
+
+							$('.service').animate({
+								"width": 40
+							}, 300);
+							$(this).css("background-position", "8px center");
+							mark = 1;
+
+						}
+					})
+				})
+			</script>
+		</div>
+	</body>
+
+</html>
