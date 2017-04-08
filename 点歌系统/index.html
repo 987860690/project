@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: url(../360换机/img/1.jpg);
+			}
+			
+			.hot {
+				width: 800px;
+				height: 254px;
+				margin: 20px auto;
+				border: 1px solid blue;
+				border-radius: 5px;
+				box-shadow: 0px 0px 10px 3px lightslategray;
+				position: relative;
+				background: url(img/banner.jpg);
+			}
+			
+			.hot>div {
+				position: absolute;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			
+			.hot .hot1 {
+				width: 125px;
+				height: 125px;
+				top: 27px;
+				left: 58px;
+				/*background: url(img/pic1.jpg);
+				padding: 3px;*/
+				/*border: 3px solid #D9EDF7;
+				box-shadow: #D9EDF7;*/
+			}
+			
+			.hot .hot2 {
+				width: 120px;
+				height: 120px;
+				top: 65px;
+				left: 309px;
+				background: url(img/pic1.jpg);
+			}
+			
+			.hot .hot3 {
+				width: 125px;
+				height: 125px;
+				top: 120px;
+				left: 521px;
+			}
+			
+			.hot .hot4 {
+				width: 105px;
+				height: 105px;
+				top: 25px;
+				right: 15px;
+			}
+			
+			.music {
+				width: 500px;
+				height: 115px;
+				background: #1a3047;
+				position: relative;
+			}
+			
+			.music .music_pic {
+				width: 280px;
+				float: left;
+				position: relative;
+			}
+			
+			.music .music_btn {
+				width: 100px;
+				float: left;
+				position: relative;
+			}
+			
+			.music .music_switch {
+				width: 20px;
+				float: right;
+			}
+			
+			.music .music_pic img {
+				width: 75px;
+				height: 75px;
+				padding: 20px 20px;
+			}
+			
+			.music .music_pic dl {
+				position: absolute;
+				top: 30px;
+				left: 110px;
+				color: #fff;
+				font-family: "楷体";
+			}
+			
+			.music .music_pic dd {
+				padding-top: 10px;
+			}
+			
+			.music .music_btn img {
+				float: left;
+				position: absolute;
+			}
+			
+			.music .music_btn img.img1 {
+				left: 0px;
+				top: 50px;
+			}
+			
+			.music .music_btn img.img2 {
+				left: 34px;
+    			top: 49px;
+			}
+			
+			.music .music_btn img.img3 {
+				left: 70px;
+				top: 50px;
+			}
+			
+			.zqq{
+				animation: zqq infinite 3s linear;
+				}
+			.hot div:hover{
+				-webkit-transform: scale(1.1);
+				-webkit-transition:all 1s;
+			}
+			@-webkit-keyframes zqq{
+				from{-webkit-transform: rotate(0deg);}
+				to{-webkit-transform: rotate(360deg);}
+			}
+			
+		
+		</style>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<div class="hot">
+			<div class="hot1"><img src="img/meirenyu.jpg" alt="歌手：林俊杰"/ title="美人鱼" datasrc="music/meirenyu.mp3"></div>
+			<div class="hot2"><img src="img/pic2.jpg" alt="歌手：aa"/ title="d鱼" datasrc="music/gaobaiqiqiu.mp3" /></div>
+			<div class="hot3"><img src="img/pic3.jpg" alt="歌手：ss"/ title="美d鱼" datasrc="music/woxiang.mp3"/></div>
+			<div class="hot4"><img src="img/pic4.jpg" alt="歌手：dd"/ title="dg鱼" datasrc="music/jiewo.mp3" /></div>
+		</div>
+
+		<div class="music">
+			<div class="music_pic">
+				<img src="img/ff.jpg" class="d_selected">
+				<dl>
+					<dt>美人鱼</dt>
+					<dd>歌手：林俊杰</dd>
+				</dl>
+			</div>
+			<div class="music_btn">
+				<img src="img/prev.png" class="img1" />
+				<img src="img/zanting.png" class="img2" />
+				<img src="img/next.png" class="img3" />
+			</div>
+			<div class="music_switch">
+				<img src="img/but.png" />
+			</div>
+		</div>
+		<div class="audio"></div>
+	</body>
+	<script>
+		var flag = 1;
+		var musicReturn = null;
+		var _index = 0;
+		var length = $('.hot div').size();
+		$('.music_switch').click(function() {
+			if(flag == 1) {
+				$('.music').animate({
+					left: "-480px"
+				}, 500, function() {
+					$('.music_switch img').attr("src", "img/but1.png")
+				})
+				flag = 2;
+			} else if(flag == 2) {
+				$('.music').animate({
+					left: "0px"
+				}, 500, function() {
+					$('.music_switch img').attr("src", "img/but.png")
+				})
+				flag = 1;
+			}
+
+		})
+		$('.hot div').click(function(){
+			_index = $(this).index();
+			$(this).addClass('zqq').siblings().removeClass('zqq');
+			var $img = $(this).find('img').attr("src");
+			var $dt = $(this).find('img').attr("title");
+			var $dd = $(this).find('img').attr("alt");
+			var $dataSrc = $(this).find('img').attr("datasrc");
+			$('.music_pic img.d_selected').attr("src", $img);
+			$('.music_pic dl dt').text($dt);
+			$('.music_pic dl dd').text($dd);
+//			$('.music_pic dl dt').text($dt);
+			//接收音乐播放器的返回
+			musicReturn = createMusic($dataSrc);
+			musicReturn.play();
+			
+		})
+		
+		//创建音乐播放器
+		function createMusic (src){
+			var mus_mp3 = $("<audio src='"+src+"'></audio>").get(0);
+			$(".audio").html("");
+			$(".audio").append(mus_mp3);
+			return mus_mp3;
+		}
+		
+		//按钮切换操作
+			//暂停
+		$('.music_btn img.img2').click(function(){
+			if(flag == 1){
+				$(this).attr("src","img/bofang.png");
+			   $('.hot div').eq(_index).trigger("click");
+			   flag =0;
+			}else if(flag == 0){
+				$(this).attr("src","img/zanting.png");
+				musicReturn.pause();
+			$('.hot div').eq(_index).removeClass("zqq");
+			flag =1;
+			}
+				
+//			
+//			musicReturn.pause();
+//			$('.hot div').eq(_index).removeClass("zqq");
+//			
+			
+		})
+		
+		//上一首
+		$('.music_btn img.img1').click(function(){
+			_index --;
+			$('.hot div').eq(_index).trigger("click");
+			$('.music_btn img.img2').attr("src","img/bofang.png");
+				flag=0;
+		})
+	
+		
+		
+		$('.music_btn img.img3').click(function(){
+			++_index ;
+			if(_index<length){
+			$('.hot div').eq(_index).trigger("click");
+				
+			}else{
+				$('.hot div').eq(0).trigger("click");
+				_index = 0
+			}
+				$('.music_btn img.img2').attr("src","img/bofang.png");
+				flag=0;
+		})
+	</script>
+
+</html>
