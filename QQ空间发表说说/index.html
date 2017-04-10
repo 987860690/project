@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			body {
+				background: url(images/bg.png);
+			}
+			
+			.shuoshuo {
+				width: 600px;
+				margin: 0 auto;
+				height: 500px;
+				border: 1px solid #DBDBDB;
+				margin-top: 170px;
+			}
+			
+			.shuoshuo p {
+				font-family: "楷体";
+				font-size: 18px;
+				padding-top: 15px;
+				padding-left: 30px;
+			}
+			
+			.shuoshuo .edit {
+				width: 560px;
+				height: 100px;
+				margin: 20px auto;
+				border: 2px solid #DBDBDB;
+				background: #fff;
+			}
+			
+			.shuoshuo .fabiao {
+				width: 540px;
+				height: 40px;
+				margin: 0 auto;
+				padding: 5px 10px;
+				position: relative;
+			}
+			
+			.shuoshuo .fabiao span {
+				display: inline-block;
+				float: right;
+				width: 60px;
+				height: 30px;
+				background: orange;
+				text-align: center;
+				line-height: 30px;
+				border: 1px solid #DBDBDB;
+				font-family: "楷体";
+				font-size: 18px;
+				cursor: pointer;
+			}
+			
+			.shuoshuo .fabiao img.one {
+				position: absolute;
+				top: 15px;
+			}
+			
+			.shuoshuo .biaoqing {
+				position: absolute;
+				top: 40px;
+				left: 25px;
+				width: 390px;
+				height: 160px;
+				background: #fff;
+				padding: 10px;
+				border: 1px solid #DBDBDB;
+				border-radius: 15px;
+				display: none;
+			}
+			.message {width: 560px;height: 400px;margin: 0 auto;}
+			.message .person{width: 530px;height: 180px;padding: 25px 25px 0px 25px;margin-top: 15px;}
+			.message .person dl{width: 530px;height:100px;border: 1px dotted #DADADA;}
+			.message .person dt{width: 100px;height: 100px;border-radius: 50%;
+						float: left; overflow: hidden;border: 2px solid #DBDBDB;}
+			.message .person dd{width: 380px;height: 100px;
+							float: right;line-height: 30px;line-height: 100px;}
+			.message .content{width: 530px;height: 80px;border: 1px solid #DADADA;border-top: none;}
+		</style>
+		<script src="js/jquery-1.10.2.min.js"></script>
+	</head>
+
+	<body>
+		<div class="shuoshuo">
+			<p>发表说说</p>
+			<div class="edit" contenteditable="true"></div>
+			<div class="fabiao">
+				<img src="images/88_thumb.gif" class="one" /><span class="pub">发表</span>
+				<div class="biaoqing">
+
+					<img src="images/smilea_thumb.gif" title="呵呵]">
+					<img src="images/tootha_thumb.gif" title="嘻嘻]">
+					<img src="images/laugh.gif" title="[哈哈]">
+					<img src="images/tza_thumb.gif" title="[可爱]">
+					<img src="images/kl_thumb.gif" title="[可怜]">
+					<img src="images/kbsa_thumb.gif" title="[挖鼻屎]">
+					<img src="images/cj_thumb.gif" title="[吃惊]">
+					<img src="images/shamea_thumb.gif" title="[害羞]">
+					<img src="images/zy_thumb.gif" title="[挤眼]">
+					<img src="images/bz_thumb.gif" title="[闭嘴]">
+					<img src="images/bs2_thumb.gif" title="[鄙视]">
+					<img src="images/lovea_thumb.gif" title="[爱你]">
+					<img src="images/sada_thumb.gif" title="[泪]">
+					<img src="images/heia_thumb.gif" title="[偷笑]">
+					<img src="images/qq_thumb.gif" title="[亲亲]">
+					<img src="images/sb_thumb.gif" title="[生病]">
+					<img src="images/mb_thumb.gif" title="[太开心]">
+					<img src="images/ldln_thumb.gif" title="[懒得理你]">
+					<img src="images/yhh_thumb.gif" title="[右哼哼]">
+					<img src="images/zhh_thumb.gif" title="[左哼哼]">
+					<img src="images/x_thumb.gif" title="[嘘]">
+					<img src="images/cry.gif" title="[衰]">
+					<img src="images/wq_thumb.gif" title="[委屈]">
+					<img src="images/t_thumb.gif" title="[吐]">
+					<img src="images/k_thumb.gif" title="[打哈气]">
+					<img src="images/bba_thumb.gif" title="[抱抱]">
+					<img src="images/angrya_thumb.gif" title="[怒]">
+					<img src="images/yw_thumb.gif" title="[疑问]">
+					<img src="images/cza_thumb.gif" title="[馋嘴]">
+					<img src="images/88_thumb.gif" title="[拜拜]">
+					<img src="images/sk_thumb.gif" title="[思考]">
+					<img src="images/sweata_thumb.gif" title="[汗]">
+					<img src="images/sleepya_thumb.gif" title="[困]">
+					<img src="images/sleepa_thumb.gif" title="[睡觉]">
+					<img src="images/money_thumb.gif" title="[钱]">
+					<img src="images/sw_thumb.gif" title="[失望]">
+					<img src="images/cool_thumb.gif" title="[酷]">
+					<img src="images/hsa_thumb.gif" title="[花心]">
+					<img src="images/hatea_thumb.gif" title="[哼]">
+					<img src="images/gza_thumb.gif" title="[鼓掌]">
+					<img src="images/dizzya_thumb.gif" title="[晕]">
+					<img src="images/bs_thumb.gif" title="[悲伤]">
+					<img src="images/crazya_thumb.gif" title="[抓狂]">
+					<img src="images/h_thumb.gif" title="[黑线]">
+					<img src="images/yx_thumb.gif" title="[阴险]">
+					<img src="images/nm_thumb.gif" title="[怒骂]">
+					<img src="images/hearta_thumb.gif" title="[心]">
+					<img src="images/unheart.gif" title="[伤心]">
+					<img src="images/pig.gif" title="[猪头]">
+					<img src="images/ok_thumb.gif" title="[ok]">
+					<img src="images/ye_thumb.gif" title="[耶]">
+					<img src="images/good_thumb.gif" title="[good]">
+					<img src="images/no_thumb.gif" title="[不要]">
+					<img src="images/z2_thumb.gif" title="[赞]">
+					<img src="images/come_thumb.gif" title="[来]">
+					<img src="images/sad_thumb.gif" title="[弱]">
+					<img src="images/lazu_thumb.gif" title="[蜡烛]">
+					<img src="images/clock_thumb.gif" title="[钟]">
+					<img src="images/cake.gif" title="[蛋糕]">
+					<img src="images/m_thumb.gif" title="[话筒]">
+					<img src="images/weijin_thumb.gif" title="[围脖]">
+					<img src="images/lxhzhuanfa_thumb.gif" title="[转发]">
+					<img src="images/lxhluguo_thumb.gif" title="[路过这儿]">
+					<img src="images/bofubianlian_thumb.gif" title="[bofu变脸]">
+					<img src="images/gbzkun_thumb.gif" title="[gbz困]">
+					<img src="images/boboshengmenqi_thumb.gif" title="[生闷气]">
+					<img src="images/chn_buyaoya_thumb.gif" title="[不要啊]">
+					<img src="images/daxiongleibenxiong_thumb.gif" title="[dx泪奔]">
+					<img src="images/cat_yunqizhong_thumb.gif" title="[运气中]">
+					<img src="images/youqian_thumb.gif" title="[有钱]">
+					<img src="images/cf_thumb.gif" title="[冲锋]">
+					<img src="images/camera_thumb.gif" title="[照相机]">
+					<img src="images/zz2_thumb.gif" title="[织]">
+					<img src="images/horse2_thumb.gif" title="神马]">
+					<img src="images/fuyun_thumb.gif" title="[浮云]">
+					<img src="images/geili_thumb.gif" title="[给力]">
+					<img src="images/wg_thumb.gif" title="[围观]">
+					<img src="images/vw_thumb.gif" title="[威武]">
+					<img src="images/panda_thumb.gif" title="[熊猫]">
+					<img src="images/rabbit_thumb.gif" title="兔子]">
+					<img src="images/otm_thumb.gif" title="[奥特曼]">
+					<img src="images/j_thumb.gif" title="[囧]">
+					<img src="images/hufen_thumb.gif" title="[互粉]">
+					<img src="images/liwu_thumb.gif" title="[礼物]">
+				</div>
+			</div>
+			<div class="message">
+				
+				<!--<div class="person">
+					<dl>
+						<dt><a href=""><img src="images/qx.png"/></a></dt>
+						<dd>Lrn</dd>
+					</dl>
+					<div class="content">aa</div>
+				</div>-->
+				
+			</div>
+		</div>
+	</body>
+		<script type="text/javascript">
+			$('img.one').click(function(e){
+				$('.biaoqing').slideDown();
+				//阻止冒泡事件发生
+				e.stopPropagation();
+			})
+			$(document).click(function(){
+				$('.biaoqing').slideUp();
+			})
+			
+			//点击小表情时添加到文本编辑框里面
+			$('.biaoqing img').click(function(){
+				//克隆该表情
+				var aImg=$(this).clone();
+				$('.edit').append(aImg)
+			})
+			
+			//发表
+			$('.fabiao span.pub').click(function(){
+				//获取文本编辑框中的内容 为空时 聚焦
+				var edit_txt = $('.edit').html();
+//				alert(edit_txt)
+				if(edit_txt==""){
+					$('.edit').focus();
+				}else{
+					$('.message').append("<div class='person'><dl><dt><a href=''><img src='images/qx.png'/></a></dt><dd>Lrn</dd></dl><div class='content'>"+edit_txt+"</div></div>")
+//					$('.message').append("ssss")
+				}
+				$('.edit').html("");
+			})
+		</script>
+</html>
