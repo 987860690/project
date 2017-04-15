@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>微信红包</title>
+		<style>
+			body,div,a,p,ul,li,span{
+				margin:  0 auto;
+				padding: 0px;
+			}
+			ul,li{
+				list-style: none;
+			}
+			body{
+				font-size: 14px;
+				font-family: "微软雅黑";
+				line-height: 25px;
+				color: #333;
+			}
+			.hide{
+				display: none;
+			}
+			.chat-box{
+				width: 700px;
+				/*margin:  0 auto;*/
+			}
+			.chat-box .message-box{
+				margin-top: 30px;
+			}
+			.chat-box .user{
+				width: 80px;
+				height: 80px;
+				float: left;
+			}
+			.chat-box .user img{
+				width: 80px;
+				height: 80px;
+			}
+			.chat-box .message{
+				width: 428px;
+				height: 163px;
+				background: url(img/redpackBg.png) no-repeat;
+				margin-left: 140px;
+				padding-left: 130px;
+				padding-top: 18px;
+				line-height: 28px;
+				position: relative;
+			}
+			.chat-box .message:hover{
+				cursor: pointer;
+			}
+			.chat-box p{
+				font-family: "微软雅黑";
+				color: #fff;
+				font-size: 18px;
+				font-weight: 650;
+			}
+			.chat-box .chat-redpack{
+				color: darkgray;
+				position: absolute;
+				left: 50px;
+				top: 120px;
+			}
+			.redpack{
+				width: 350px;
+				height: 450px;
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				margin-top: -225px;
+				margin-left: -175px;
+				z-index: 2;
+				color: #f09279;
+				padding-top: 36px;
+				text-align: center;
+				background: #fff;
+				background: url(img/bg.png) center top no-repeat #D55041;
+			}
+			.redpack_bg{
+				position: fixed;
+				top: 0px;
+				left: 0px;
+				width: 100%;
+				height: 100%;
+				z-index: 1;
+				background: rgba(0,0,0,.5);
+			}
+			.redpack .close{
+				position: absolute;
+				top: 15px;
+				left: 15px;
+			}
+			.redpack .user_photo{
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+			}
+			.redpack .welcome{
+				padding-top: 20px;
+				font-size: 20px;
+				line-height: 22px;
+				color: #c7a977;
+			}
+			.redpack .redpack_kai{
+				display: inline-block;
+				margin-top: 30px;
+				
+			}
+			.start{
+				animation:packRotage 1s infinite;
+				-webkit-animation:packRotage 1s infinite;
+			}
+			@-webkit-keyframes packRotage{
+				50%{
+					-webkit-transform: rotateY(180deg);
+				}
+			}
+			@keyframes packRotage{
+				50%{
+					-webkit-transform: rotateY(180deg);
+				}
+				
+			}
+			.redpack_detail{
+				width: 700px;
+				background: url(img/redpackDetail.png) center top no-repeat;
+				text-align: center;
+				position: relative;
+				padding-top: 150px;
+			}
+			.redpack_detail .back{
+				/*width: 30px;
+				height: 30px;
+				transform: scale(1,1);
+				transform: all 1s;*/
+				position: absolute;
+				left: 20px;
+				top: 20px;
+			}
+			.redpack_detail .back:hover{
+				
+			}
+			.redpack_detail .redpack_user{
+				width: 150px;
+				height: 150px;
+				border-radius: 50%;
+			}
+			/*.redpack_detail p{
+				font-size: 18px;
+				line-height: 28px;
+			}*/
+			.redpack_detail .first{
+				font-weight: 600;
+				font-size: 20px;
+				margin-top: 20px;
+			}
+			.redpack_detail .best{
+				color: #999;
+			}
+			.redpack_detail .money{
+				font-size: 40px;
+				font-weight: 750;
+				margin-top: 30px;
+				margin-bottom: 20px;
+			}
+			.redpack_detail .rest{
+				color: green;
+			}
+			
+			.award_list li{
+				float: left;
+				height: 80px;
+				border-bottom: 1px sollid #eee;
+				margin: 0 10px;
+				padding-bottom: 10px;
+				padding-left: 100px;
+				width: 580px;
+				text-align: left;
+				padding-top: 10px;
+				position: relative;
+			}
+			.award_list li .list_img{
+				position: absolute;
+				left:0px;
+				top: 0px;
+				width: 80px;
+				height: 80px;
+				border-radius: 50%;
+			}
+			.award_list li .name{
+				font-size: 25px;
+				color: #333;
+			}
+			.award_list li .award{
+				float: right;
+				font-size: 28px;
+			}
+			.award_list li .data{
+				color: #999;
+			}
+			.award_list li .luck{
+				float: right;
+				color: #F09279;
+			}
+		</style>
+	</head>
+	<body>
+		<!--Chat窗口-->
+		<div class="chat-box">
+			<div class="message-box">
+				<div class="user"><a href="javascript:"><img src="img/user.jpg" /></a></div>
+				<div class="message">
+					<p>恭喜发财，大吉大利</p>
+					<p>领取红包</p>
+					<p class="chat-redpack">微信红包</p>
+				</div>
+			</div>
+		</div>
+		
+		<!--Chat——open窗口-->
+		<div class="redpack hide">
+			<a href="javascript:void(0)" class="close"><img src="img/close.png" /></a>
+			<img src="img/user.jpg" class="user_photo"/>
+				<p>若若</p>
+				<p>给你发了个红包</p>
+				<p class="welcome">恭喜发财，大吉大利</p>
+				<a href="javascript:void(0)" class="redpack_kai"><img src="img/kai.png" /></a>
+		</div>
+		<div class="redpack_bg hide"></div>
+		
+		<!--redPack详情页-->
+		<div class="redpack_detail  hide">
+			<a href="javascript:void(0)" class="back"><img src="img/back.png"></a>
+			<img src="img/user.jpg" class="redpack_user">
+			<p class="first">若若的红包</p>
+			<p class="best">恭喜发财，大吉大利</p>
+			<p class="money">9.99元</p>
+			<p class="rest">已存入零钱，可直接转账</p>
+			
+			<ul class="award_list">
+			<li><img src="img/user.jpg" class="list_img">
+				<p><span class="name">王梦洁</span><span class="award">6.65元</span></p>
+				<p><span class="data">21:45:45</span><span class="luck">收起最佳</span></p>
+			</li>
+			</ul>
+		</div>
+		
+		
+		<script type="text/javascript">
+			function getRandomMoney(money,number){
+					var nums=[];
+					for(var i=0;i<6;i++){
+					var randomMoney=Math.round(Math.random()*1000)/100;
+					if(randomMoney>(money*100-number)/100){
+						//设置最大金额
+						randomMoney=(Math.round(money*10-number)/10);
+					}
+						if(number==1){
+							nums.push(money);
+						}else{
+							nums.push(randomMoney);
+						}
+						//金额减去随即出来的金额
+						money = (Math.round(money*100)-Math.round(randomMoney*100))/100;
+						number-=1;
+					}
+					return nums;
+				}
+				
+		    document.getElementsByClassName('message')[0].onclick=function(){
+		    	document.getElementsByClassName('redpack')[0].className='redpack';
+		    	document.getElementsByClassName('redpack_bg')[0].className='redpack_bg';
+		    }
+			document.getElementsByClassName('redpack_kai')[0].onclick=function(){
+			
+				var curr=this;
+				curr.className='redpack_kai start';
+				var timer=setTimeout(function(){
+					curr.className='redpack_kai';
+					document.getElementsByClassName('redpack')[0].className='redpack hide';
+				document.getElementsByClassName('redpack_bg')[0].className='redpack_bg hide';
+				document.getElementsByClassName('chat-box')[0].className='chat-box hide';
+				var money=100;
+				var number=6;
+				var obj=["李若楠","宋康乐","王梦洁","付芳芳","孙聪","焦琦玲"];
+				//获取随机金额
+				var nums = getRandomMoney(money,number);
+				var awardList=document.getElementsByClassName('award_list')[0];
+				
+				for(var i=0;i<nums.length;i++){
+					var li=document.createElement("li");
+					li.innerHTML='<img src="img/user.jpg" class="list_img"/>'+'<p><span class="name">'+obj[i]+
+					'</span>'
+					+'<span class="award">'+nums[i]+'</span></p>'+'<p><span class="data">21:45:45</span>>'
+					+'<span class="luck">手起最佳</span></p>';
+				}
+				},1000)
+				
+			
+				document.getElementsByClassName('redpack_detail')[0].className='redpack_detail';
+			}
+			document.getElementsByClassName('close')[0].onclick=function(){
+				document.getElementsByClassName('redpack')[0].className='redpack hide';
+				document.getElementsByClassName('redpack_bg')[0].className='redpack_bg hide';
+			}
+		</script>
+	
+	</body>
+</html>
