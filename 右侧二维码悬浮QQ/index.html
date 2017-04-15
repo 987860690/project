@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.flqq{width: 158px;height: 230px;background: transparent;position: fixed;top: 80px;right: 0px;}
+			.flqq .fl_l{width:158px;}
+			.flqq img.top{display: block;}
+			.flqq .fl_l .con{width:158px;height: 158px;background: url(img/bg.jpg);text-align: center;padding-top: 5px;font-size: 12px;}
+			.flqq .fl_l .con a{text-decoration: none;color: #fff;}
+			.flqq .fl_l .con p.txt{height:35px;line-height: 35px;width: 120px;margin: 10px auto;}
+			.flqq .fl_r{width: 33px;height: 178px;background: url(img/small.png);position: absolute;top: 0px;left: -33px;display: none;}
+			
+		</style>
+	</head>
+	<body>
+		<div class="flqq">
+			<div class="fl_l">
+				<img src="img/top.png" class="top"/>
+				<div class="con">
+					<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=987860690&amp;site=11&amp;menu=yes"><img src="img/ewm.jpg" width="105px" height="105px"/>
+					<p class="txt"><img src="img/qq.jpg"width="18px" align="absmiddle"/>&nbsp;在线咨询客服</p></a>
+				</div>
+				<img src="img/bot.png" class="bot" />
+			</div>
+			<div class="fl_r"></div>
+		</div>
+	</body>
+	<script src="js/jquery.min.js"></script>
+	<script>
+		$('img.bot').click(function(){
+			$('.flqq').animate({right:"-158px"},500,function(){
+				$('.fl_r').css("display","block")
+			})
+			
+		})
+		$('.fl_r').click(function(){
+			$('.fl_r').css("display","none")
+			$('.flqq').animate({right:"0px"},500)
+		})
+		
+	</script>
+</html>
