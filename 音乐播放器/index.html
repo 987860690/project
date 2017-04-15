@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>音乐播放器</title>
+
+		<style type="text/css">
+			#phone {
+				width: 320px;
+				height: 640px;
+				background: #000;
+				margin: 50px auto;
+			}
+			
+			.top {
+				width: 320px;
+				height: 23px;
+				background: url(img/1.png);
+			}
+			
+			.title {
+				width: 320px;
+				height: 30px;
+				background: url(img/2.png);
+				color: #fff;
+				text-align: center;
+				font-size: 24px;
+				font-weight: bold;
+			}
+			
+			.singer {
+				width: 320px;
+				height: 40px;
+				color: #fff;
+				text-align: center;
+				line-height: 40px;
+				font-size: 12px;
+			}
+			
+			.play {
+				width: 190px;
+				height: 190px;
+				background: url(img/3.png);
+				border-radius: 50%;
+				margin: 0 auto;
+				cursor: pointer;
+			}
+			
+			.lrc {
+				
+				width: 300px;
+				height: 325px;
+				margin: 20px auto;
+				overflow: hidden;
+				/*border: 1px solid red;*/
+			}
+			/*xuanzhuan*/
+			
+			.play.rotate {
+				/*动画名称  时间  匀速  循环*/
+				animation: rot 10s linear infinite;
+			}
+			/*动画关键帧*/
+			
+			@-webkit-keyframes rot {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(360deg);
+				}
+			}
+			
+			.lrc #content {
+				color: #fff;
+				text-align: center;
+				position: relative;
+			}
+			
+			textarea {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="phone">
+			<div class="top">
+			</div>
+			<div class="title">小幸运</div>
+			<div class="singer">谭嘉仪</div>
+			<div class="play" id="play"> </div>
+			<div class="lrc">
+				<div id="content">
+
+				</div>
+			</div>
+		</div>
+		<!--音频标签-->
+		<audio src="music/谭嘉仪-小幸运.mp3" id="music"></audio>
+		<!--文本域存储歌词-->
+		<textarea id="text">
+			[ver:v1.0]
+			[ti:2]
+			[00:00.64]小幸运 - 谭嘉仪
+			[00:02.15]词：徐世珍&吴辉福
+			[00:03.70]曲：JerryC
+			[00:04.14]编曲：JerryC
+			[00:13.77]我听见雨滴落在青青草地
+			[00:19.89]我听见远方下课钟声响起
+			[00:25.74]可是我没有听见你的声音
+			[00:30.74]认真 呼唤我姓名
+			[00:37.92]爱上你的时候还不懂感情
+			[00:44.12]离别了才觉得刻骨 铭心
+			[00:50.09]为什么没有发现遇见了你
+			[00:54.70]是生命最好的事情
+			[01:00.30]也许当时忙着微笑和哭泣
+			[01:06.36]忙着追逐天空中的流星
+			[01:12.12]人理所当然的忘记
+			[01:16.55]是谁风里雨里一直默默守护在原地
+			[01:24.44]原来你是我最想留住的幸运
+			[01:29.69]原来我们和爱情曾经靠得那么近
+			[01:35.67]那为我对抗世界的决定
+			[01:40.29]那陪我淋的雨
+			[01:43.28]一幕幕都是你 一尘不染的真心
+			[01:50.60]与你相遇 好幸运
+			[01:53.96]可我已失去为你泪流满面的权利
+			[01:59.98]但愿在我看不到的天际
+			[02:04.63]你张开了双翼
+			[02:07.68]遇见你的注定 她会有多幸运
+			[02:27.28]青春是段跌跌撞撞的旅行
+			[02:33.44]拥有着后知后觉的美丽
+			[02:39.55]来不及感谢是你给我勇气
+			[02:44.22]让我能做回我自己
+			[02:49.72]也许当时忙着微笑和哭泣
+			[02:55.55]忙着追逐天空中的流星
+			[03:01.61]人理所当然的忘记
+			[03:06.03]是谁风里雨里一直默默守护在原地
+			[03:13.79]原来你是我最想留住的幸运
+			[03:19.05]原来我们和爱情曾经靠得那么近
+			[03:25.17]那为我对抗世界的决定
+			[03:29.68]那陪我淋的雨
+			[03:32.56]一幕幕都是你 一尘不染的真心
+			[03:39.89]与你相遇 好幸运
+			[03:43.40]可我已失去为你泪流满面的权利
+			[03:49.32]但愿在我看不到的天际
+			[03:53.97]你张开了双翼
+			[03:56.98]遇见你的注定
+			[04:00.47]Oh 她会有多幸运
+		</textarea>
+
+		<script type="text/javascript">
+			//js简化docum.getElementById
+			document.getElementById = (function(func) {
+				return function() {
+					return func.apply(document, arguments);
+				}
+			})(document.getElementById);
+			var $ = document.getElementById;
+
+			//			var oPlay = document.getElementById('play')
+			var oMusic = $("music");
+			var oPlay = $("play");
+			var oText = $('text');
+			var oContent = $('content')
+				//做一个开关记录音乐的播放状态
+			var onOff = true;
+			oPlay.onclick = function() {
+				if(onOff) {
+					oMusic.play();
+					this.className = 'play rotate'
+				} else {
+					//暂停播放
+					oMusic.pause()
+				}
+				//没点击一次取相反状态
+				onOff = !onOff;
+			}
+
+			//歌词同步并添加到lrc盒子里面
+			//从【处分隔开
+			var lrc = oText.value.split('[');
+			var html = '';
+
+//			var time = lrcArr[0].split(".");
+//			var times = time[0].split(":");
+//			var sec = times[0] * 60 + times[1] * 1;
+			for(var i = 0; i < lrc.length; i++) {
+				var lrcArr = lrc[i].split("]");
+				//lrcArr[1]---->歌词
+				//lrcArr[0]---->时间
+				
+				
+				//對時間進行分割
+				var time = lrcArr[0].split(".");
+				var times = time[0].split(":");
+				var sec = times[0] * 60 + times[1] * 1;
+				if(lrcArr[1]) {
+					html += "<p id="+sec+">" + lrcArr[1] + "</p>";
+					
+				}
+				
+				console.log(html)
+			}
+				//吧content盒子的内容设置为html
+			oContent.innerHTML = html;
+			
+			
+			var ap = oContent.getElementsByTagName("p");
+			var num = 0;
+			//监听音乐的播放jindu，然后让相应的歌词变色
+			oMusic.addEventListener("timeupdate", function() {
+				//获取音乐播放的当前时间并取整
+				var curr = parseInt(oMusic.currentTime);
+				if($(curr)) {
+					//将所有的p颜色改为#fff
+					for(var i = 0; i < ap.length; i++) {
+						ap[i].style.color = "#fff"
+					}
+						//当前播放的歌词颜色变为红色
+					$(curr).style.color = "red"
+					
+					if(ap[7+num].id==curr){
+						num ++;
+						oContent.style.top=-40*num+"px"	
+//						ap[3+num].style.color = "red"
+					}
+				
+				}	
+				//
+			})
+		</script>
+	</body>
+
+</html>
