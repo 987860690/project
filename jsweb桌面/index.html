@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            background: url("img/bg.jpg");
+            background-size: cover;
+        }
+        .menu{
+            width:140px;
+            height:225px;
+            background: #fff;
+            position: absolute;
+            display: none;
+        }
+        .menu ul{
+            width:140px;
+            height:224px;
+            box-shadow: 0px 0px 10px #000;
+            /*border:1px solid deepskyblue;*/
+        }
+        .menu ul li{
+            background: #fff;
+            width: 124px;
+            height:30px;
+            display: block;
+            border:1px solid #dbdbdb;
+            line-height: 30px;
+            list-style: none;
+            padding-left: 15px;
+            color: rgba(23, 20, 20, 1.76);
+            font-family: "楷体";
+            font-size: 17px;
+        }
+        .menu ul li:hover{
+           border: 1px solid deepskyblue;
+            background: deepskyblue;
+        }
+        .menu ul li.active{
+            background: deepskyblue;
+        }
+        .menu ul li img{
+            margin-right: 10px;
+        }
+        .huanfu{
+            width:520px;
+            height:380px;
+            margin: 50px auto;
+            border:1px solid #000;
+            border-radius: 10px;
+            box-shadow: 0px 0px 40px #fff;
+            background-color: rgba(0,0,0,.6);
+            color: #fff;
+            display: none;
+        }
+        .huanfu .title{
+            width: 520px;
+            height: 50px;
+            border-radius: 10px 10px 0 0;
+            background-color: #000;
+            text-indent: 10px;
+            line-height: 50px;
+            position: relative;
+        }
+        .huanfu .title img{
+            position: absolute;
+            top:13px;
+            right:20px;
+        }
+        .huanfu .skin{
+            width:520px;
+            height: 330px;
+            /*border: 1px solid red;*/
+        }
+        .huanfu .skin img{
+            width: 138px;
+            height: 75px;
+            border: 2px solid #fff;
+            margin-left:20px;
+            margin-top:20px;
+
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+</head>
+<body>
+    <div class="menu">
+        <ul class="list">
+            <li><img src="img/yingyong.png" align="absmiddle">添加应用</li>
+            <li><img src="img/huoqu.png" align="absmiddle">获取课程</li>
+            <li><img src="img/biaoji.png" align="absmiddle">添加标记</li>
+            <li><img src="img/shuaxin.png" align="absmiddle">刷新</li>
+            <li><img src="img/shangchuan.png" align="absmiddle">上传资料</li>
+            <li><img src="img/genghuan.png" align="absmiddle">更换背景</li>
+            <li><img src="img/zhuxiao.png" align="absmiddle">注销</li>
+        </ul>
+    </div>
+    <div class="huanfu">
+        <div class="title">
+            <a>桌面背景墙</a>
+            <img src="img/close.png" width="24" height="24">
+        </div>
+        <div class="skin">
+            <img src="img/1-1.jpg" alt="1">
+            <img src="img/2-2.jpg" alt="2">
+            <img src="img/3-3.jpg" alt="3">
+            <img src="img/4-4.jpg" alt="4">
+            <img src="img/5-5.jpg" alt="5">
+            <img src="img/6-6.jpg" alt="6">
+            <img src="img/7-7.jpg" alt="7">
+            <img src="img/8-8.jpg" alt="8">
+            <img src="img/9-9.jpg" alt="9">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+    <!--禁止浏览器自带的右键菜单-->
+    document.oncontextmenu = function () {
+        return false;
+    }
+//    鼠标按下时
+    $(document).mousedown(function (e) {
+//            判断我们按下的哪个键
+        var key = e.which;
+        if(key==3){
+//            获取鼠标点击时xy轴的距离
+            var x = e.clientX;
+            var y = e.clientY;
+            $('.menu').css({top:y,left:x});
+            $('.menu').show('500');
+        }
+    })
+
+//    在页面任意位置点击的时候 菜单消失
+    $(document).click(function () {
+        $('.menu').hide('500');
+    })
+    $('.list li').click(function () {
+        var _index = $(this).index();
+        if(_index == 5){
+            $('.huanfu').show();
+        }
+    })
+//    关闭更换背景框
+    $('.title img').click(function () {
+        $('.huanfu').hide();
+    })
+//    点击图片进行换肤
+    $('.skin img').click(function () {
+        var aSrc = $(this).attr('src');
+        var bgSrc = aSrc.replace(/-\d*/,"");
+//        alert(bgSrc)
+        $("body").css({"background":"url("+bgSrc+")"});
+    })
+
+
+//    var aLi  = $('.list li');
+//    alert(aLi[5]);
+//    aLi[5].click(function () {
+//        $('.huanfu').show();
+//    })
+</script>
+</html>
